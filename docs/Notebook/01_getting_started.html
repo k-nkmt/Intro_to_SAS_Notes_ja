@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>導入 &#8212; Intro to SAS Notes ja</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/custom.css?v=62598be2" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notebook/01_getting_started';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SASの画面構成" href="02_SAS_windows_environment.html" />
+    <link rel="prev" title="Intro to SAS Notes" href="../README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Intro to SAS Notes ja</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">導入</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_SAS_windows_environment.html">SASの画面構成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Basic_SAS_Programming.html">基本的なSASプログラム</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_DataIO.html">データの入出力</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_SAS_Variables.html">SAS変数と割り当てステートメント</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_Subsetting_Data_SAS.html">データの操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_Data_Summarization.html">データの要約</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Format_Procedure_Dates.html">フォーマットと日付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Character_Functions.html">文字列関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_Data_Cleaning_Basics.html">データクリーニング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Data_Manipulation.html">データ操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_ODS_Graphics.html">Output Delivery System(ODS)とグラフ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_Statistical_Analysis.html">SASによる統計解析</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="14_Macros.html">SAS MACRO プログラミング</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15_Simulations.html">SASによるシミュレーション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16_PROC_SQL.html">PROC SQLの紹介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17_Solutions_to_Exercises.html">演習の回答例</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Notebook/01_getting_started.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>導入</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sas">SASとは?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">SASの利用方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">利用するアプリケーション</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>導入<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>さあ、始めましょう!ここでは、SASの概要を説明します。ここでの目的は、アプリケーションの動作方法と構成を理解し、収集したデータを管理および分析するためのプログラムを書き始められるようになることです。</p>
+<p>SASが実行を期待する、または必要とする重要な構文ルールに注目してください。</p>
+<section id="sas">
+<h2>SASとは?<a class="headerlink" href="#sas" title="Link to this heading">#</a></h2>
+<p>SASは第4世代のプログラミング言語(4GL)です。Wikipediaによれば、第4世代のプログラミング言語とは「ビジネスソフトウェア開発など、特定の目的のために設計されたプログラミング言語」のことです。すべての4GLは、プログラミング作業を軽減し、ソフトウェア開発にかかる時間とコストを最小限に抑えるように設計されています。これはSASを学ぶメリットのひとつにすぎません!</p>
+<p>つまり、SASシステムは、モジュール化されたソフトウェア製品の統合システムであり、次のことが可能です。</p>
+<ul class="simple">
+<li><p>データの入力、取得、管理が簡単</p></li>
+<li><p>スマートなレポートやきれいな図の作成</p></li>
+<li><p>データの統計的・数学的分析</p></li>
+<li><p>ビジネスに関する計画、予測、意思決定</p></li>
+<li><p>プロジェクト管理、業務プロセス調査研究</p></li>
+<li><p>プロセスの品質改善</p></li>
+<li><p>新しいソフトウェアアプリケーションの開発</p></li>
+</ul>
+<p>さらに、データウェアハウス、データマイニング、人的資源管理、意思決定支援、財務管理など、大規模な機能にもSASを使用できます。</p>
+<p>もともと「SAS」は「Statistical Analysis System」(統計分析システム)の略でしたが、現在ではシステムが多機能化したため、SAS Instituteは略としての表記をやめ、単にソフトウェアの名前としています。</p>
+<!-- 
+# Introduction
+
+Let's get started! This lesson is an overview of what the SAS statistical software application is all about. The purpose here is to get you acquainted with how the application works and is organized so that you can begin writing programs to manage and analyze the data that you have collected.
+
+Keep your eye out for important syntax rules for what the SAS application expects or needs from the user in order to perform the tasks that you want it to do.
+
+## What is SAS?
+
+
+
+SAS is a fourth-generation programming language (or 4GL). According to Wikipedia, a fourth-generation programming language is "a programming language designed with a specific purpose in mind such as the development of commercial business software." All 4GLs are designed to reduce programming effort and minimize the time and cost it takes to develop software. That's just one of the benefits you will gain by learning SAS!
+
+What all this really means is that the SAS System is an integrated system of modular software products. It enables you to:
+
+* enter, retrieve and manage your data easily
+* create slick reports and pretty pictures
+* analyze your data statistically and mathematically
+* plan, forecast and make decisions concerning your business
+* manage your projects and perform research on how you conduct your operations
+* improve the quality of your processes, as well as
+* develop entirely new software applications.
+
+In addition, you can also use SAS for many large-scale functions, such as data warehousing, data mining, human resources management, decision support, and financial management.
+
+Originally, the acronym "SAS" stood for "Statistical Analysis System." Because the system has now grown to be so diverse and can do so much more than perform statistical analyses, the SAS Institute now no longer treats "SAS" as an acronym, but rather the software's name.
+--></section>
+<section id="id2">
+<h2>SASの利用方法<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>SASを利用するには複数の方法があります。</p>
+<ol class="arabic simple">
+<li><p>大学・企業等、組織で用意されている方法</p></li>
+<li><p>SAS OnDemand for Academics - これも無料ですが、SASクラウドサーバーで動作し、ブラウザ経由で動作します。アクセスを取得する方法の詳細は、<a class="reference external" href="https://www.sas.com/en_us/software/on-demand-for-academics.html">SAS OnDemand</a>をご覧ください。<br />
+「for Academics」となっていますが下記の記載があり、学習目的であれば誰でも利用可能です。</p></li>
+</ol>
+<blockquote>
+<div><p>大学に所属していない方も、SAS OnDemand for Academics: Studioに無償でアクセスし、分析スキルを磨いていただけます。</p>
+</div></blockquote>
+</section>
+<section id="id3">
+<h2>利用するアプリケーション<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>SASプログラムを実行するためのアプリケーションは複数あります。基盤となっているようなものとしては</p>
+<ol class="arabic simple">
+<li><p>Base SAS</p></li>
+<li><p>SAS Studio</p></li>
+<li><p>SAS Enterprise Guide</p></li>
+<li><p>jupyter notebook(SASカーネル)</p></li>
+</ol>
+<p>があります。2,3は1がベースとなっており、ウィンドウのレイアウトなど若干異なる部分はありますが、プログラムを実行する際の動作や出力に特に違いはありません。<br />
+基本的には組織で利用されているものを選べば問題ありませんが、特に指定がなければ最もシンプルな1かSAS OnDemandから利用可能な2がいいかと思います。</p>
+<p>4.については、資料の作成などには非常に便利ですが、現在は変数ビューアがSASに対応ていしないため、慣れるまで利用は避けておくのがいいでしょう。</p>
+<!-- 
+## Obtaining a Copy of SAS
+
+As a UF student, you have multiple options for gaining access to the SAS software.
+
+1. If you have a Windows PC (NOT a Mac), then you have the option of installing the SAS software directly on to your computer. The cost is approximately \$35 to obtain the installation DVDs. More information can  be found at [UF's statistical software liscencing page](https://helpdesk.ufl.edu/software-services/spss/). You can purchase the software at  the UF Computing Helpdesk at the  Hub. You  may keep access for as long as you are a student. This option is only available if you are able to come to campus in person to buy the software. They will not mail it.
+
+If you are Mac user, or you are a PC user and are off campus or want to consider other options, check these out:
+
+2. You can gain access from ANY computer, tablet or smartphone via [UFApps](http://apps.ufl.edu). This will not install SAS on your computer, but rather you will have full and FREE access to the latest version of SAS through a remote desktop setup. In addition to SAS, you will also have FREE access to JMP, STATA, SPSS, Mathematica, Minitab, Mathcad, ArgGIS, and a host of other great (an typically expensive) programs. Access is free for as long as you are a student.
+
+3. SAS University Edition. This is a free access version of SAS itself. See the [SAS University Edition web site](https://www.sas.com/en_us/software/university-edition.html) for information on how to download this software. You can use this on either a PC or a Mac. You will need to download a free virtualization software for your computer (VM VirtualBox), and then download the virtualization software for SAS that runs in VirtualBox. Be sure to follow the instructions provided by SAS for installing SAS Univeristy Edition and setting up the shared folder carefully.
+
+4. SAS OnDemand for Academics. Basically the same as SAS University Edition but runs through SAS cloud servers. This is also free but works through a browser instead of the virtualization software. See the [SAS OnDemand for Academics webpage](https://www.sas.com/en_us/software/on-demand-for-academics.html) for more information on how to sign up with SAS to get access.
+
+Note that with whichever one you select, you will need to contact the corresponding provider (UF Helpdesk or SAS) for techinical help (i.e non SAS coding issues such as installation and setup) as I may not be familiar with these techinical issues. 
+--></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "sas"
+        },
+        kernelOptions: {
+            name: "sas",
+            path: "./Notebook"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'sas'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Intro to SAS Notes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_SAS_windows_environment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SASの画面構成</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sas">SASとは?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">SASの利用方法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">利用するアプリケーション</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By k-nkmt
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

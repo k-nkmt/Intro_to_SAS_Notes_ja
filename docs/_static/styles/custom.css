@@ -1,0 +1,12 @@
+html{
+  --pst-font-family-base-system:-apple-system,"BlinkMacSystemFont","Helvetica Neue","Arial", 
+  "Hiragino Kaku Gothic ProN",
+  "Hiragino Sans",
+  "BIZ UDPGothic",
+  Meiryo,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --pst-font-family-monospace-system:"SFMono-Regular","Menlo","Consolas","Monaco","Liberation Mono","Lucida Console",monospace;
+}
+
+body, .body {
+    font-family: var(--pst-font-family-base) !important;
+}
